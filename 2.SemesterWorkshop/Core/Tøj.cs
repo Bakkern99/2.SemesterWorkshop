@@ -12,5 +12,6 @@ public class Tøj
     
     public string EjerId { get; set; }
     
+    public string image { get; set; }
     
 }
