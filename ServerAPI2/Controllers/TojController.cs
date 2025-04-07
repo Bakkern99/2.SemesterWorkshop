@@ -35,12 +35,12 @@ namespace ServerAPI2.Controllers
             tojRepo.DeleteById(id);
         }
         
-        [HttpPut]
-        [Route("{id:int}")]
-        public void UpdateById(int id)
+        [HttpPut("{id:int}")]
+        public void UpdateById(int id, [FromBody] Toj toj)
         {
-            tojRepo.UpdateById(id);
+           tojRepo.UpdateById(id, toj);
+        }
+
         }
 
     }
-}

@@ -19,12 +19,12 @@ public class TojRepository : ITojRepository
         _tojItems.Add(tojItem);
     }
 
-    public void UpdateById(int id)
+    public void UpdateById(int id, Toj tojItem)
     {
-        var existingToj = _tojItems.FirstOrDefault(t => t.Id == _tojItems.Id);
+        var existingToj = _tojItems.FirstOrDefault(t => t.Id == id);
         if (existingToj != null)
         {
-            existingToj.Type = _tojItems.Type;
+            existingToj.Type = tojItem.Type;
             existingToj.farve = tojItem.farve;
             existingToj.size = tojItem.size;
             existingToj.status = tojItem.status;
@@ -33,9 +33,11 @@ public class TojRepository : ITojRepository
         }
     }
 
+
     public void DeleteById(int id)
     {
-        var tojToRemove = _tojItems.FirstOrDefault(t => t.Type == title);
+        var tojToRemove = _tojItems.FirstOrDefault(t => t.Id == id);
+
         if (tojToRemove != null)
         {
             _tojItems.Remove(tojToRemove);

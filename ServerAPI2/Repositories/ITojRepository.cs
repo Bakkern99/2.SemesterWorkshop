@@ -6,6 +6,7 @@ public interface ITojRepository
 {
     List<Toj> GetAll();
     void Add(Toj tojItem);
-    void UpdateById(int id);
+    void UpdateById(int id, Toj tojItem);
+
     void DeleteById(int id);
 }
