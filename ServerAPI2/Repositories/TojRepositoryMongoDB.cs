@@ -1,7 +1,7 @@
 using Shared;
 using MongoDB.Driver;
 
-namespace ServerAPI.Repositories;
+namespace ServerAPI2.Repositories;
 
 public class TojRepositoryMongoDB : ITojRepository
 {
@@ -23,7 +23,7 @@ public class TojRepositoryMongoDB : ITojRepository
         }
 
         var dbName = "Mydatabase";
-        var collectionName = "tøj";
+        var collectionName = "toj";
 
         TojCollection = client.GetDatabase(dbName)
             .GetCollection<Toj>(collectionName);
@@ -41,11 +41,14 @@ public class TojRepositoryMongoDB : ITojRepository
         TojCollection.InsertOne(item);
     }
 
-    public void Delete(string title)
+    public void UpdateById(int id)
     {
-        TojCollection.DeleteOne(Builders<Toj>.Filter.Eq(t => t.Type, title));
+        var deleteResult = TojCollection
+            .DeleteOne(Builders<Toj>.Filter.Where(r => r.Id == id));
+       
+        
     }
-
+    
     public List<Toj> GetAll()
     {
         var noFilter = Builders<Toj>.Filter.Empty;

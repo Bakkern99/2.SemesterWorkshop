@@ -1,6 +1,7 @@
+using System.Collections.Immutable;
 using Shared;
 
-namespace ServerAPI.Repositories;
+namespace ServerAPI2.Repositories;
 
 public class TojRepository : ITojRepository
 {
@@ -18,12 +19,12 @@ public class TojRepository : ITojRepository
         _tojItems.Add(tojItem);
     }
 
-    public void Update(Toj tojItem)
+    public void UpdateById(int id)
     {
-        var existingToj = _tojItems.FirstOrDefault(t => t.Id == tojItem.Id);
+        var existingToj = _tojItems.FirstOrDefault(t => t.Id == _tojItems.Id);
         if (existingToj != null)
         {
-            existingToj.Type = tojItem.Type;
+            existingToj.Type = _tojItems.Type;
             existingToj.farve = tojItem.farve;
             existingToj.size = tojItem.size;
             existingToj.status = tojItem.status;
@@ -32,7 +33,7 @@ public class TojRepository : ITojRepository
         }
     }
 
-    public void Delete(string title)
+    public void DeleteById(int id)
     {
         var tojToRemove = _tojItems.FirstOrDefault(t => t.Type == title);
         if (tojToRemove != null)
