@@ -1,8 +1,8 @@
 using System.Net.Http.Json;
 using Blazored.LocalStorage;
-using Core;
+using Shared;
 
-namespace WebApp2.Service.Login;
+namespace SemesterWorkshop.Service.Login;
 
 public class LoginServiceServerSide : LoginServiceClientSide
 {
