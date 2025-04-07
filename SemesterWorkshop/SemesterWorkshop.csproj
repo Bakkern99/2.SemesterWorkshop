@@ -17,4 +17,10 @@
       <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Service\ITojService.cs" />
+      <Compile Remove="Service\TojServiceMock.cs" />
+      <Compile Remove="Service\TojServiceServer.cs" />
+    </ItemGroup>
+
 </Project>

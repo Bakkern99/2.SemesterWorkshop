@@ -1,10 +1,9 @@
-@page "/bikeprotected"
+@page "/HomePageProtected"
 @inject ILoginService mlogin
 @inject NavigationManager navMan
-@using Core
-@using webapp2.Service
-@using WebApp2.Service.Login
-<PageTitle>Bike</PageTitle>
+@using Shared
+@using SemesterWorkshop.Service
+<PageTitle>Tøj list</PageTitle>
 
 <h1>Bikes</h1>
 
@@ -51,7 +50,7 @@ else
 
     private async Task LoadAll()
     {
-        bikes = await mService.GetAll();
+        bikes = await .GetAll();
     }
 
     private void NavigateToAdd()
@@ -59,7 +58,7 @@ else
         navMan.NavigateTo("addbike");
     }
 
-    private async Task DeleteBike(BEBike bike)
+    private async Task DeleteBike(Toj bike)
     {
         await mService.DeleteById(bike.Id);
         await LoadAll();
