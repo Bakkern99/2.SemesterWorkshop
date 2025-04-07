@@ -55,7 +55,7 @@ public class TojRepositoryMongoDB : ITojRepository
         return TojCollection.Find(noFilter).ToList();
     }
 
-    public void Update(Toj tojItem)
+    public void UpdateById(int id, Toj tojItem)
     {
         var updateDef = Builders<Toj>.Update
             .Set(x => x.Type, tojItem.Type)
@@ -65,7 +65,12 @@ public class TojRepositoryMongoDB : ITojRepository
             .Set(x => x.image, tojItem.image)
             .Set(x => x.pris, tojItem.pris);
 
-        TojCollection.UpdateOne(x => x.Id == tojItem.Id, updateDef);
+        TojCollection.UpdateOne(x => x.Id == id, updateDef);
+    }
+
+    public void DeleteById(int id)
+    {
+        TojCollection.DeleteOne(x => x.Id == id);
     }
 
     private int MaxId()

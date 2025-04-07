@@ -1,13 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using ServerAPI2.Repositories;
 using Shared;
-namespace ServerAPI2.Controllers;
 
-public class TojController
+namespace ServerAPI2.Controllers
+
 {
     [ApiController]
     [Route("api/toj")]
-    public class BikeController : ControllerBase
+    public class TojController : ControllerBase
     {
+        private ITojRepository tojRepo;
+
+        public TojController(ITojRepository tojRepo) {
+            this.tojRepo = tojRepo;
+        }
+
         [HttpGet]
         public IEnumerable<Toj> Get()
         {
@@ -28,12 +35,12 @@ public class TojController
             tojRepo.DeleteById(id);
         }
         
-        [HttpPut]
-        [Route("{id:int}")]
-        public void UpdateById(int id)
+        [HttpPut("{id:int}")]
+        public void UpdateById(int id, [FromBody] Toj toj)
         {
-            tojRepo.UpdateById(id);
+           tojRepo.UpdateById(id, toj);
+        }
+
         }
 
     }
-}
