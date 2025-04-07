@@ -28,7 +28,7 @@ public class TojRepository : ITojRepository
             existingToj.farve = tojItem.farve;
             existingToj.size = tojItem.size;
             existingToj.status = tojItem.status;
-            existingToj.image = tojItem.image;
+            existingToj.imageUrl = tojItem.imageUrl;
             existingToj.pris = tojItem.pris;
         }
     }

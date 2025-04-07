@@ -62,7 +62,7 @@ public class TojRepositoryMongoDB : ITojRepository
             .Set(x => x.status, tojItem.status)
             .Set(x => x.size, tojItem.size)
             .Set(x => x.farve, tojItem.farve)
-            .Set(x => x.image, tojItem.image)
+            .Set(x => x.imageUrl, tojItem.imageUrl)
             .Set(x => x.pris, tojItem.pris);
 
         TojCollection.UpdateOne(x => x.Id == id, updateDef);
