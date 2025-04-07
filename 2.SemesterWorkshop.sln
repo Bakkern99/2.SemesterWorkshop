@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemesterWorkshop", "SemesterWorkshop\SemesterWorkshop.csproj", "{B125AEF1-2E26-4053-A274-278FBCE83DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{ADEA2BE9-D0F1-46EE-912E-9EBD08DD6FF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{3DF069DC-BAC3-4DDC-B690-13F05B58BE6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,9 +14,9 @@ Global
 		{B125AEF1-2E26-4053-A274-278FBCE83DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B125AEF1-2E26-4053-A274-278FBCE83DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B125AEF1-2E26-4053-A274-278FBCE83DF0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADEA2BE9-D0F1-46EE-912E-9EBD08DD6FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADEA2BE9-D0F1-46EE-912E-9EBD08DD6FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADEA2BE9-D0F1-46EE-912E-9EBD08DD6FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADEA2BE9-D0F1-46EE-912E-9EBD08DD6FF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF069DC-BAC3-4DDC-B690-13F05B58BE6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF069DC-BAC3-4DDC-B690-13F05B58BE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF069DC-BAC3-4DDC-B690-13F05B58BE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF069DC-BAC3-4DDC-B690-13F05B58BE6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
