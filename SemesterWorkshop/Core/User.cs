@@ -1,4 +1,4 @@
-namespace 2.SemesterWorkshop.Core;
+namespace SemesterWorkshop.Core;
 
 public class User
 {
