@@ -1,13 +1,14 @@
 @page "/HomePageProtected"
 @inject ILoginService mlogin
 @inject NavigationManager navMan
+@using global::SemesterWorkshop.Service.Login
 @using Shared
 @using SemesterWorkshop.Service
 <PageTitle>Tøj list</PageTitle>
 
-<h1>Bikes</h1>
+<h1>clothingItems</h1>
 
-@if (bikes == null)
+@if (toj== null)
 {
     <p><em>Loading...</em></p>
 }
@@ -16,13 +17,13 @@ else
     <table class="table">
 
         <tbody>
-        @foreach (var bike in bikes)
+        @foreach (var toj in toj)
         {
             <tr class="bikeRow">
-                <td><h2>@bike.Brand - @bike.Model</h2><br />
-                    Price: @bike.Price kr.</td>
-                <td><img class="bikeImg" src="@bike.ImageUrl" width="200px"/></td>
-                <td><button class="btn-primary" @onclick="() => DeleteBike(bike)">Delete</button></td>
+                <td><h2>@toj.Type - @toj.farve. -  @toj.size - @toj.status </h2><br />
+                    Price: @toj.pris kr.</td>
+                <td><img class="bikeImg" src="@toj.imageUrl" width="200px"/></td>
+                <td><button class="btn-primary" @onclick="() => DeleteBike(toj)">Delete</button></td>
             </tr>
         }
         </tbody>
@@ -35,7 +36,7 @@ else
 
 @code {
 
-    private BEBike[]? bikes;
+    private Toj[]? toj;
 
     User? currentUser;
 
@@ -50,17 +51,17 @@ else
 
     private async Task LoadAll()
     {
-        bikes = await .GetAll();
+        toj = await mService.GetAll();
     }
 
     private void NavigateToAdd()
     {
-        navMan.NavigateTo("addbike");
+        navMan.NavigateTo("additem");
     }
 
-    private async Task DeleteBike(Toj bike)
+    private async Task DeleteBike(Toj toj)
     {
-        await mService.DeleteById(bike.Id);
+        await mService.DeleteById(toj.Id);
         await LoadAll();
 
     }

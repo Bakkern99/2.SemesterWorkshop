@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/Home"
 @using Shared
 
 <PageTitle>Home</PageTitle>
@@ -24,7 +24,7 @@ else
             {
                 <tr>
                     <td>@item.Id</td>
-                    <td>@item.Name</td>
+                    <td>@item.Type</td>
                     <td>
                         <button @onclick="() => DeleteItem(item)">Delete</button>
                     </td>
@@ -73,13 +73,13 @@ else
     {
         clothingItems = new List<Toj>
         {
-            new Toj { Id = 1, Name = "T-shirt" },
-            new Toj { Id = 2, Name = "Bukser" }
+            new Toj { Id = 1, Type = "T-shirt" },
+            new Toj { Id = 2, Type = "Bukser" }
         };
         await Task.CompletedTask;
     }
 
-    private async Task DeleteItem(Tøj item)
+    private async Task DeleteItem(Toj item)
     {
         clothingItems?.RemoveAll(t => t.Id == item.Id);
         await Task.CompletedTask;
@@ -103,7 +103,7 @@ else
         if (!string.IsNullOrWhiteSpace(newItemName))
         {
             int newId = clothingItems.Any() ? clothingItems.Max(t => t.Id) + 1 : 1;
-            clothingItems.Add(new Toj { Id = newId, Name = newItemName });
+            clothingItems.Add(new Toj { Id = newId, Type = newItemName });
             showAddModal = false;
             newItemName = string.Empty;
             errorMessage = string.Empty;

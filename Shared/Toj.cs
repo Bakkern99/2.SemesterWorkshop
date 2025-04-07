@@ -13,7 +13,7 @@ public class Toj
 
     public int Id { get; set; }
 
-    public string image { get; set; } = string.Empty;
+    public string? imageUrl { get; set; } = string.Empty;
 
     public int pris { get; set; } = 0; 
 }
