@@ -1,11 +1,11 @@
 using System;
 namespace Shared;
 
-public class Tøj
+public class Toj
 {
     public string Type { get; set; } = String.Empty;
 
-    public int størrelse { get; set; } 
+    public int size { get; set; } 
 
     public string farve { get; set; } = string.Empty;
 
