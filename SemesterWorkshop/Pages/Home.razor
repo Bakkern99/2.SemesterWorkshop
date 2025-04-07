@@ -5,10 +5,64 @@
 
 <h1>Hello, world!</h1>
 
+@if (clothingItems == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in clothingItems)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <button @onclick="() => DeleteItem(item)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (showAddModal)
+    {
+        <div class="modal" style="display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+            <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 30%;">
+                <h3>Add New Item</h3>
+                <label>
+                    Name:
+                    <input type="text" @bind="newItemName" />
+                </label>
+                @if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    <p style="color: red;">@errorMessage</p>
+                }
+                <div style="margin-top: 10px;">
+                    <button @onclick="AddItem">Add</button>
+                    <button @onclick="CloseAddModal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <button @onclick="OpenAddModal">Add New Item</button>
+}
+
 @code
 {
-    
-    private Tøj[]? tøj;
+    private List<Toj>? clothingItems;
+    private bool showAddModal = false;
+    private string newItemName = string.Empty;
+    private string errorMessage = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -17,19 +71,46 @@
 
     private async Task LoadAll()
     {
-        tøj = await mService.GetAll();
+        clothingItems = new List<Toj>
+        {
+            new Toj { Id = 1, Name = "T-shirt" },
+            new Toj { Id = 2, Name = "Bukser" }
+        };
+        await Task.CompletedTask;
     }
 
-    private void NavigateToAdd()
+    private async Task DeleteItem(Tøj item)
     {
-        navMan.NavigateTo("additem");
+        clothingItems?.RemoveAll(t => t.Id == item.Id);
+        await Task.CompletedTask;
+        StateHasChanged();
     }
 
-    private async Task Delete(Tøj tøj)
+    private void OpenAddModal()
     {
-        await mService.Delete(tøj.Id);
-        await LoadAll();
-
+        showAddModal = true;
+        newItemName = string.Empty;
+        errorMessage = string.Empty;
     }
 
+    private void CloseAddModal()
+    {
+        showAddModal = false;
+    }
+
+    private void AddItem()
+    {
+        if (!string.IsNullOrWhiteSpace(newItemName))
+        {
+            int newId = clothingItems.Any() ? clothingItems.Max(t => t.Id) + 1 : 1;
+            clothingItems.Add(new Toj { Id = newId, Name = newItemName });
+            showAddModal = false;
+            newItemName = string.Empty;
+            errorMessage = string.Empty;
+        }
+        else
+        {
+            errorMessage = "Please enter a name for the item.";
+        }
+    }
 }

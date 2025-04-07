@@ -1,8 +1,7 @@
 @page "/login/{target:alpha}"
-@using WebApp2.Service.Login
+@using _2.SemesterWorkshop.Service
 @inject ILoginService loginService
 @inject NavigationManager navManager
-
 
 <h3>Login</h3>
 <div class="row justify-content-center">
@@ -15,7 +14,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6 mb-3">
         <label for="password">Password:</label>
-        <InputText id="password" @bind-Value="password"
+        <InputText id="password" type="password" @bind-Value="password"
                    placeholder="Indtast password..." class="form-control" />
     </div>
 </div>
@@ -25,26 +24,27 @@
             <button @onclick="OnClickLogin" class="btn btn-primary">Login</button>
         </div>
     </div>
-    <scan style="color: red">@errorText</scan>
+    <span style="color: red;">@errorText</span>
 </div>
+
 @code {
     string username = "";
     string password = "";
     string errorText = "";
 
-    [Parameter] public string target { get; set; } = "";
+    [Parameter] public string target { get; set; } = "home";
 
     private async Task OnClickLogin()
     {
-        var success =  await loginService.Login(username, password);
+        var success = await loginService.Login(username, password);
         if (success)
         {
-            navManager.NavigateTo(target);
+            navManager.NavigateTo($"/{target}");
         }
         else
         {
             errorText = "Bad combination ... try again";
+            StateHasChanged();
         }
     }
-
 }
