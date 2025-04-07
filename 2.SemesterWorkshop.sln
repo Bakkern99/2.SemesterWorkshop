@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.SemesterWorkshop", "2.SemesterWorkshop\2.SemesterWorkshop.csproj", "{B125AEF1-2E26-4053-A274-278FBCE83DF0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemesterWorkshop", "SemesterWorkshop\SemesterWorkshop.csproj", "{B125AEF1-2E26-4053-A274-278FBCE83DF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
