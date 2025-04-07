@@ -4,4 +4,31 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+@code
+{
+    
+    private Tøj[]? tøj;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAll();
+    }
+
+    private async Task LoadAll()
+    {
+        bikes = await mService.GetAll();
+    }
+
+    private void NavigateToAdd()
+    {
+        navMan.NavigateTo("additem");
+    }
+
+    private async Task Deletetøj(Tøj tøj)
+    {
+        await mService.DeleteById(tøj.Id);
+        await LoadAll();
+
+    }
+
+}
