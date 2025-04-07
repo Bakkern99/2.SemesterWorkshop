@@ -1,4 +1,4 @@
-namespace SemesterWorkshop.Core;
+namespace Core;
 
 public class User
 {
@@ -11,4 +11,3 @@ public class User
 
     public string Email { get; set; }
 }
-
