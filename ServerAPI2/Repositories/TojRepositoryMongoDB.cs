@@ -10,7 +10,7 @@ public class TojRepositoryMongoDB : ITojRepository
 
     public TojRepositoryMongoDB()
     {
-        var mongoUri = "mongodb://localhost:27017/";
+        var mongoUri = "cluster0-shard-00-01.szwvu.mongodb.net:27017";
 
         try
         {
@@ -63,7 +63,8 @@ public class TojRepositoryMongoDB : ITojRepository
             .Set(x => x.size, tojItem.size)
             .Set(x => x.farve, tojItem.farve)
             .Set(x => x.imageUrl, tojItem.imageUrl)
-            .Set(x => x.pris, tojItem.pris);
+            .Set(x => x.pris, tojItem.pris)
+            .Set(x => x.Beskrivelse, tojItem.Beskrivelse);
 
         TojCollection.UpdateOne(x => x.Id == id, updateDef);
     }
@@ -72,7 +73,7 @@ public class TojRepositoryMongoDB : ITojRepository
     {
         TojCollection.DeleteOne(x => x.Id == id);
     }
-
+    
     private int MaxId()
     {
         return GetAll().Select(t => t.Id).DefaultIfEmpty(0).Max();

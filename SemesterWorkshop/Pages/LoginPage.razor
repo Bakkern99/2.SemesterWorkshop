@@ -1,6 +1,6 @@
-@page "/login/{target:alpha}"
+@page"/login"
+@page"/login/{target:alpha}"
 @using global::SemesterWorkshop.Service.Login
-@using SemesterWorkshop.Service
 @inject ILoginService loginService
 @inject NavigationManager navManager
 
@@ -8,7 +8,7 @@
 <div class="row justify-content-center">
     <div class="col-md-6 mb-3">
         <label for="username">Brugernavn:</label>
-        <InputText id="username" @bind-Value="username"
+        <InputText id="username" @bind-Value="username" 
                    placeholder="Indtast brugernavn..." class="form-control" />
     </div>
 </div>
@@ -38,7 +38,7 @@
     private async Task OnClickLogin()
     {
         var success = await loginService.Login(username, password);
-        if (success)
+        if (!success)
         {
             navManager.NavigateTo($"/{target}");
         }

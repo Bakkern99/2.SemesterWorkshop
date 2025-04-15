@@ -15,6 +15,11 @@ public class LoginServiceClientSide : ILoginService  {
         User? res = await localStorage.GetItemAsync<User>("user");
         return res;
     }
+    
+    
+    
+    
+    
     public async Task<bool> Login(string username, string password)
     {
         User? u = await Validate(username, password);
@@ -29,9 +34,9 @@ public class LoginServiceClientSide : ILoginService  {
 
     private List<User> users = new List<User>()
     {
-        new User { Id = 1, UserName = "rip",Password = "1234", Role = "admin"},
-        new User {Id=2, UserName = "rap", Password = "4321", Role = "admin"},
-        new User {Id = 3, UserName = "rup", Password = "qwerty", Role="member"}
+        new User { Id = 1, UserName = "benjamin",Password = "1234", Role = "admin"},
+        new User {Id=2, UserName = "jacob", Password = "4321", Role = "admin"},
+        new User {Id = 3, UserName = "alex", Password = "qwerty", Role="member"}
     };
     protected virtual async Task<User?> Validate(string username, string password)
     {
