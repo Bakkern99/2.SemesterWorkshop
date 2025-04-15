@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Security.Cryptography.X509Certificates;
 using Shared;
 
 namespace ServerAPI2.Repositories;
@@ -7,7 +8,7 @@ public class TojRepository : ITojRepository
 {
     private readonly List<Toj> _tojItems = new();
 
-    public List<Toj> GetAll()
+    public List<Toj> GetAll() 
     {
         return _tojItems;
     }
@@ -30,6 +31,8 @@ public class TojRepository : ITojRepository
             existingToj.status = tojItem.status;
             existingToj.imageUrl = tojItem.imageUrl;
             existingToj.pris = tojItem.pris;
+            existingToj.Beskrivelse = tojItem.Beskrivelse;
+            existingToj.OwnerId = tojItem.OwnerId;
         }
     }
 
@@ -43,4 +46,6 @@ public class TojRepository : ITojRepository
             _tojItems.Remove(tojToRemove);
         }
     }
+    
+    
 }

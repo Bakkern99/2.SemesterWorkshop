@@ -1,9 +1,9 @@
-﻿@page "/Home"
+﻿@page "/"
+@page "/home"
 @using Shared
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
 
 @if (clothingItems == null)
 {
@@ -58,6 +58,7 @@ else
 }
 
 @code
+
 {
     private List<Toj>? clothingItems;
     private bool showAddModal = false;
